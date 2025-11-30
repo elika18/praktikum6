@@ -1,0 +1,77 @@
+# Inisialisasi list untuk menyimpan data
+data_mahasiswa = []
+
+def tambah():
+    """Fungsi untuk menambah data mahasiswa"""
+    print("\nTAMBAH DATA")
+    nama = input("Nama        : ")
+    nilai = input("Nilai       : ")
+    # Memasukkan data ke dalam list dalam bentuk dictionary
+    data_mahasiswa.append({'nama': nama, 'nilai': int(nilai)})
+    print("Data berhasil ditambahkan!")
+
+def tampilkan():
+    """Fungsi untuk menampilkan seluruh data"""
+    print("\nDAFTAR NILAI MAHASISWA")
+    print("=" * 40)
+    print(f"| {'NO':<3} | {'NAMA':<20} | {'NILAI':<5} |")
+    print("=" * 40)
+    
+    if not data_mahasiswa:
+        print(f"| {'TIDAK ADA DATA':^36} |")
+    else:
+        for i, mhs in enumerate(data_mahasiswa):
+            print(f"| {i+1:<3} | {mhs['nama']:<20} | {mhs['nilai']:<5} |")
+    print("=" * 40)
+
+def hapus(nama):
+    """Fungsi untuk menghapus data berdasarkan nama"""
+    print("\nHAPUS DATA")
+    found = False
+    for i, mhs in enumerate(data_mahasiswa):
+        if mhs['nama'].lower() == nama.lower():
+            del data_mahasiswa[i]
+            found = True
+            print(f"Data '{nama}' berhasil dihapus.")
+            break
+    
+    if not found:
+        print(f"Data dengan nama '{nama}' tidak ditemukan.")
+
+def ubah(nama):
+    """Fungsi untuk mengubah data berdasarkan nama"""
+    print("\nUBAH DATA")
+    found = False
+    for mhs in data_mahasiswa:
+        if mhs['nama'].lower() == nama.lower():
+            print(f"Nilai lama: {mhs['nilai']}")
+            nilai_baru = input("Masukkan Nilai Baru : ")
+            mhs['nilai'] = int(nilai_baru)
+            found = True
+            print("Data berhasil diubah.")
+            break
+            
+    if not found:
+        print(f"Data dengan nama '{nama}' tidak ditemukan.")
+
+# --- Program Utama (Menu Loop) ---
+while True:
+    print("\n")
+    print("[(T)ambah, (L)ihat, (U)bah, (H)apus, (K)eluar]")
+    pilihan = input("Pilih menu: ").lower()
+
+    if pilihan == 't':
+        tambah()
+    elif pilihan == 'l':
+        tampilkan()
+    elif pilihan == 'u':
+        nama = input("Masukkan nama yang ingin diubah: ")
+        ubah(nama)
+    elif pilihan == 'h':
+        nama = input("Masukkan nama yang ingin dihapus: ")
+        hapus(nama)
+    elif pilihan == 'k':
+        print("Program selesai.")
+        break
+    else:
+        print("Pilihan tidak valid!")
