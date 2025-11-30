@@ -1,0 +1,23 @@
+import math
+
+# 1. Mengubah fungsi a(x)
+# Asal: def a(x): return x**2
+a = lambda x: x**2
+
+# 2. Mengubah fungsi b(x, y)
+# Asal: def b(x, y): return math.sqrt(x**2 + y**2)
+b = lambda x, y: math.sqrt(x**2 + y**2)
+
+# 3. Mengubah fungsi c(*args)
+# Asal: def c(*args): return sum(args)/len(args)
+c = lambda *args: sum(args)/len(args)
+
+# 4. Mengubah fungsi d(s)
+# Asal: def d(s): return "".join(set(s))
+d = lambda s: "".join(set(s))
+
+# --- Area Pengetesan (Optional, untuk membuktikan kode jalan) ---
+print("Hasil a(5):", a(5))
+print("Hasil b(3, 4):", b(3, 4))
+print("Hasil c(1, 2, 3, 4, 5):", c(1, 2, 3, 4, 5))
+print("Hasil d('hello'):", d('hello'))
